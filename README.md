@@ -6,22 +6,17 @@
 ## 📌 What is this FAQ Management System?  
 This **FAQ Management System** is a **Django-based API** that helps businesses, websites, and applications manage frequently asked questions efficiently. It supports **multiple languages**, provides **real-time translations**, and utilizes **caching (Redis)** to ensure fast responses.  
 
-This system is ideal for:  
-✅ **Customer Support Portals** – Provide multilingual FAQs to users.  
-✅ **E-commerce Platforms** – Automate common queries and responses.  
-✅ **Corporate Websites** – Maintain a centralized knowledge base.  
-✅ **Educational Platforms** – Offer FAQs in multiple languages for better accessibility.  
 
 ---
 
-## 🌟 Key Features  
-✔️ **Multilingual FAQ Support** – Fetch FAQs in English, Hindi, Bengali, Spanish, and more.  
-✔️ **Intelligent Caching** – Uses **Redis** to store translated FAQs, reducing redundant translations.  
-✔️ **REST API for Easy Integration** – Fetch, add, update, and delete FAQs seamlessly.  
-✔️ **Automated Language Detection** – Returns the FAQ in the requested language only.  
-✔️ **Django Admin Panel** – Easily manage FAQs with a user-friendly interface.  
-✔️ **Robust API Testing** – Uses `pytest` and `flake8` for reliability and clean code.  
-
+## 🚀 Features
+- **Multilingual Support:** Manage FAQs in multiple languages (`question_hi`, `question_bn`, etc.)
+- **WYSIWYG Editor Integration:** **django-ckeditor** is used to allow rich text formatting for answers.
+- **API for FAQ Management:** Create, Read, Update, Delete FAQs via a **REST API** with language-specific querying.
+- **Efficient Caching:** Utilizes **Redis** to cache translated FAQ data and improve API performance.
+- **Automatic Translation:** Supports automatic translation via **Google Translate API** (or `googletrans`).
+- **User-Friendly Admin Interface:** Easily manage FAQs from the Django Admin Panel.
+- **Code Quality & Unit Tests:** Follows **PEP8** guidelines, and includes **unit tests** with **pytest**.
 ---
 
 ## 🚀 How Does It Work?  
@@ -40,3 +35,22 @@ GET /api/faqs/?lang=hi  # Fetch FAQs in Hindi
         "answer": "मेरा नाम रिया है।"
     }
 ]
+```sh
+GET /api/faqs/?lang=bn
+[
+    {
+        "question": "তোমার নাম কি?",
+        "answer": "আমার নাম রিয়া।"
+    }
+]
+```sh
+POST /api/faqs/
+ {
+    "question": "What is your name?",
+    "answer": "My name is Riya.",
+    "question_hi": "आपका क्या नाम है?",
+    "question_bn": "তোমার নাম কি?",
+    "question_es": "¿cómo te llamas?"
+}
+
+

@@ -59,20 +59,24 @@ POST /api/faqs/
 - **API Testing:**  Browsable API
 
 ---
-### 🧑‍💻Installation
--**Run Server** python manage.py runserver
--**Virtual Enviroment** venv\Scripts\activate
--**Git code** {
-    -#Initialize the Git repository 
-     - git init
-    -#Add your files:
-      -git add .
-    -#commit your changes
-   - git commit -m "Initial commit for FAQ project"
-   -#link your local repo 
-      -git remote add origin https://github.com/riya1901/FAQs.git
-     -#to Push
-     -git push -u origin branch
-      <!--  according to branch -->
-}
+### 🧑‍💻 Installation
+- **Run Server**: `python manage.py runserver`
+- **Virtual Environment**: `venv\Scripts\activate`
+- **Git Code**:
+  ```sh
+  # Initialize the Git repository
+  git init
+  
+  # Add your files
+  git add .
+  
+  # Commit your changes
+  git commit -m "Initial commit for FAQ project"
+  
+  # Link your local repo
+  git remote add origin https://github.com/riya1901/FAQs.git
+  
+  # To Push
+  git push -u origin branch  # according to branch
+
 

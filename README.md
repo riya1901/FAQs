@@ -1,11 +1,6 @@
 # 🚀 FAQ Management System – Multilingual & Scalable API  
 > A powerful **FAQ (Frequently Asked Questions) Management System** designed to handle multilingual queries with **optimized caching** for seamless performance.
 
----
-
-## 📌 What is this FAQ Management System?  
-This **FAQ Management System** is a **Django-based API** that helps businesses, websites, and applications manage frequently asked questions efficiently. It supports **multiple languages**, provides **real-time translations**, and utilizes **caching (Redis)** to ensure fast responses.  
-
 
 ---
 
@@ -13,7 +8,7 @@ This **FAQ Management System** is a **Django-based API** that helps businesses, 
 - **Multilingual Support:** Manage FAQs in multiple languages (`question_hi`, `question_bn`, etc.)
 - **WYSIWYG Editor Integration:** **django-ckeditor** is used to allow rich text formatting for answers.
 - **API for FAQ Management:** Create, Read, Update, Delete FAQs via a **REST API** with language-specific querying.
-- **Efficient Caching:** Utilizes **Redis** to cache translated FAQ data and improve API performance.
+- **Efficient Caching:** Utilizes **Redis(DOCKer)** to cache translated FAQ data and improve API performance.
 - **Automatic Translation:** Supports automatic translation via **Google Translate API** (or `googletrans`).
 - **User-Friendly Admin Interface:** Easily manage FAQs from the Django Admin Panel.
 - **Code Quality & Unit Tests:** Follows **PEP8** guidelines, and includes **unit tests** with **pytest**.
@@ -27,7 +22,7 @@ This **FAQ Management System** is a **Django-based API** that helps businesses, 
 5. The response is sent back **in the requested language only**, ensuring a clean user experience.  
 
 ### 📌 Example API Calls  
-```sh
+
 GET /api/faqs/?lang=hi  # Fetch FAQs in Hindi
      [
     {
@@ -35,7 +30,7 @@ GET /api/faqs/?lang=hi  # Fetch FAQs in Hindi
         "answer": "मेरा नाम रिया है।"
     }
 ]
-```sh
+
 GET /api/faqs/?lang=bn
 [
     {
@@ -43,7 +38,7 @@ GET /api/faqs/?lang=bn
         "answer": "আমার নাম রিয়া।"
     }
 ]
-```sh
+
 POST /api/faqs/
  {
     "question": "What is your name?",
@@ -53,4 +48,31 @@ POST /api/faqs/
     "question_es": "¿cómo te llamas?"
 }
 
+### 🛠 Tech Stack
+- **Backend:** Django, Django Rest Framework (DRF)
+- **Database:**  SQLite
+- **Caching:** Redis
+- **Translation:** deepTranslator
+- **Rich Text Editor:** Django CKEditor
+- **API Testing:**  Browsable API
+
+---
+### 🧑‍💻Installation
+-**Run Server** python manage.py runserver
+-**Virtual Enviroment** venv\Scripts\activate
+-**Git code** {
+     #Initialize the Git repository 
+      git init
+    #Add your files:
+      git add .
+    #  commit your changes
+    git commit -m "Initial commit for FAQ project"
+    #link your local repo 
+      git remote add origin https://github.com/riya1901/FAQs.git
+     #to Push
+     git push -u origin branch
+      <!--  according to branch -->
+
+
+}
 

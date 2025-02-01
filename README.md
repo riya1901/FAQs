@@ -22,6 +22,7 @@
 5. The response is sent back **in the requested language only**, ensuring a clean user experience.  
 
 ### 📌 Example API Calls  
+```sh
 
 GET /api/faqs/?lang=hi  # Fetch FAQs in Hindi
      [
@@ -47,6 +48,7 @@ POST /api/faqs/
     "question_bn": "তোমার নাম কি?",
     "question_es": "¿cómo te llamas?"
 }
+```
 
 ### 🛠 Tech Stack
 - **Backend:** Django, Django Rest Framework (DRF)
@@ -61,18 +63,16 @@ POST /api/faqs/
 -**Run Server** python manage.py runserver
 -**Virtual Enviroment** venv\Scripts\activate
 -**Git code** {
-     #Initialize the Git repository 
-      git init
-    #Add your files:
-      git add .
-    #  commit your changes
-    git commit -m "Initial commit for FAQ project"
-    #link your local repo 
-      git remote add origin https://github.com/riya1901/FAQs.git
-     #to Push
-     git push -u origin branch
+    -#Initialize the Git repository 
+     - git init
+    -#Add your files:
+      -git add .
+    -#commit your changes
+   - git commit -m "Initial commit for FAQ project"
+   -#link your local repo 
+      -git remote add origin https://github.com/riya1901/FAQs.git
+     -#to Push
+     -git push -u origin branch
       <!--  according to branch -->
-
-
 }
 

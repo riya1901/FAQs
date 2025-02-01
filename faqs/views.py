@@ -1,15 +1,6 @@
 
-# from rest_framework import generics
-# from .models import FAQ
-# from .serializers import FAQSerializer
 
-# class FAQList(generics.ListCreateAPIView):
-#     queryset = FAQ.objects.all()
-#     serializer_class = FAQSerializer
 
-# class FAQDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = FAQ.objects.all()
-#     serializer_class = FAQSerializer
 from rest_framework import generics
 from django.core.cache import cache
 from .models import FAQ
@@ -22,15 +13,18 @@ class FAQList(generics.ListCreateAPIView):
         lang = self.request.GET.get('lang', 'en')
         cache_key = f"faq_list_{lang}"
 
-        cached_faqs = cache.get(cache_key)  # Check cache
+        cached_faqs = cache.get(cache_key)  # Cache check karo
         if cached_faqs:
-            return cached_faqs  # Return cached data
+            return FAQ.objects.filter(id__in=[faq["id"] for faq in cached_faqs])  # JSON से IDs लेके queryset fetch करो
 
         queryset = FAQ.objects.all()
-        for faq in queryset:
-            faq.question = faq.get_translated_question(lang)  # Get translated question
+        serialized_faqs = []
 
-        cache.set(cache_key, queryset, timeout=3600)  # Cache for 1 hour
+        for faq in queryset:
+            faq.question = faq.get_translated_question(lang)  # Translate question
+            serialized_faqs.append({"id": faq.id, "question": faq.question, "answer": faq.answer})  # JSON store karne ke liye dict me convert
+
+        cache.set(cache_key, serialized_faqs, timeout=3600)  # Cache for 1 hour
         return queryset
 
 class FAQDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -44,8 +38,10 @@ class FAQDetail(generics.RetrieveUpdateDestroyAPIView):
 
         cached_faq = cache.get(cache_key)
         if cached_faq:
-            return cached_faq
+            obj.question = cached_faq["question"]
+            obj.answer = cached_faq["answer"]
+            return obj
 
         obj.question = obj.get_translated_question(lang)  # Translate question
-        cache.set(cache_key, obj, timeout=3600)  # Cache object for 1 hour
+        cache.set(cache_key, {"question": obj.question, "answer": obj.answer}, timeout=3600)  # JSON store karo
         return obj
